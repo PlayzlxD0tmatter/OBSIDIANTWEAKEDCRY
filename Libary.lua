@@ -29,40 +29,7 @@ local Options = {}
 local Tooltips = {}
 
 local BaseURL = "https://raw.githubusercontent.com/PlayzlxD0tmatter/OBSIDIANTWEAKEDCRY/tree/main"
-local CustomImageManager = {}
-local CustomImageManagerAssets = {
-    TransparencyTexture = {
-        RobloxId = 139785960036434,
-        Path = "Obsidian/assets/TransparencyTexture.png",
-        URL = BaseURL .. "assets/TransparencyTexture.png",
 
-        Id = nil,
-    },
-
-    SaturationMap = {
-        RobloxId = 4155801252,
-        Path = "Obsidian/assets/SaturationMap.png",
-        URL = BaseURL .. "assets/SaturationMap.png",
-
-        Id = nil,
-    },
-
-    LoadingIcon = {
-        RobloxId = 97544096941083,
-        Path = "Obsidian/assets/LoadingIcon.png",
-        URL = BaseURL .. "assets/LoadingIcon.png",
-
-        Id = nil,
-    },
-
-    CheckIcon = {
-        RobloxId = 97682394690683,
-        Path = "Obsidian/assets/CheckIcon.png",
-        URL = BaseURL .. "assets/CheckIcon.png",
-
-        Id = nil,
-    },
-}
 do
     local function RecursiveCreatePath(Path: string, IsFile: boolean?)
         if not isfolder or not makefolder then
