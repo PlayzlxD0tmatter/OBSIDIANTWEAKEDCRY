@@ -19,22 +19,8 @@ local gethui = gethui or function()
     return CoreGui 
 end
 
-local LocalPlayer = Players.LocalPlayer
-local MousePosition = UserInputService:GetMouseLocation()
-UserInputService.InputChanged:Connect(function(Input)
-    if
-        Input.UserInputType == Enum.UserInputType.MouseMovement
-        or Input.UserInputType == Enum.UserInputType.Touch
-    then
-        MousePosition = Input.Position
-    end
-end)
-local Mouse = setmetatable({}, {
-    __index = function(_, key)
-        if key == "X" then return MousePosition.X end
-        if key == "Y" then return MousePosition.Y end
-    end,
-})
+local UserInputService = game:GetService("UserInputService")
+local Mouse = UserInputService:GetMouseLocation()
 
 local Labels = {}
 local Buttons = {}
@@ -1918,7 +1904,7 @@ do
         Holder.MouseButton2Click:Connect(ContextMenu.Toggle)
 
         SatVipMap.MouseButton1Down:Connect(function()
-            while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or UserInputService:IsMouseButtonPressed(Enum.UserInputType.Touch) do
+            while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1 or Enum.UserInputType.Touch) do
                 local MinX = SatVipMap.AbsolutePosition.X
                 local MaxX = MinX + SatVipMap.AbsoluteSize.X
                 local LocationX = math.clamp(Mouse.X, MinX, MaxX)
@@ -1940,7 +1926,7 @@ do
             end
         end)
         HueSelector.MouseButton1Down:Connect(function()
-            while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or UserInputService:IsMouseButtonPressed(Enum.UserInputType.Touch) do
+            while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1 or Enum.UserInputType.Touch) do
                 local Min = HueSelector.AbsolutePosition.Y
                 local Max = Min + HueSelector.AbsoluteSize.Y
                 local Location = math.clamp(Mouse.Y, Min, Max)
@@ -1958,7 +1944,7 @@ do
         if TransparencySelector then
             TransparencySelector.MouseButton1Down:Connect(function()
                 while
-                    UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or UserInputService:IsMouseButtonPressed(Enum.UserInputType.Touch)
+                    UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1 or Enum.UserInputType.Touch)
                 do
                     local Min = TransparencySelector.AbsolutePosition.Y
                     local Max = TransparencySelector.AbsolutePosition.Y + TransparencySelector.AbsoluteSize.Y
@@ -3242,7 +3228,7 @@ do
                 Side.ScrollingEnabled = false
             end
 
-            while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or UserInputService:IsMouseButtonPressed(Enum.UserInputType.Touch) do
+            while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1 or Enum.UserInputType.Touch) do
                 local Location = Mouse.X
                 local Scale = math.clamp((Location - Bar.AbsolutePosition.X) / Bar.AbsoluteSize.X, 0, 1)
 
